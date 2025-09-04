@@ -57,12 +57,21 @@ const Contact: React.FC = () => {
       <section className="contact-hero">
         <div className="container">
           <div className="hero-content">
-            <h1 className="hero-title">
-              Get in <span className="hero-title-accent">Touch</span>
-            </h1>
-            <p className="hero-description">
-              Ready to preserve your language? Have questions? We'd love to hear from you.
-            </p>
+            <div className="hero-text">
+              <h1 className="hero-title">
+                Get in <span className="hero-title-accent">Touch</span>
+              </h1>
+              <p className="hero-description">
+                Ready to preserve your language? Have questions? We'd love to hear from you.
+              </p>
+            </div>
+            <div className="hero-image">
+              <img 
+                src="/contact.png" 
+                alt="Global communication and diversity - people speaking different languages" 
+                className="contact-hero-image"
+              />
+            </div>
           </div>
         </div>
       </section>
