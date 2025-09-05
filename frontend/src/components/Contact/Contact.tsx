@@ -110,7 +110,7 @@ const Contact: React.FC = () => {
                   </div>
                   <div className="contact-details">
                     <h3>Call Us</h3>
-                    <p>+254 700 000 000</p>
+                    <p>+254 791 814 113</p>
                     <p>Mon-Fri, 9AM-6PM EAT</p>
                   </div>
                 </div>
@@ -121,8 +121,8 @@ const Contact: React.FC = () => {
                   </div>
                   <div className="contact-details">
                     <h3>Community</h3>
-                    <p>Join our Discord</p>
-                    <p>Follow us on Twitter</p>
+                      <p>Join our Whatsapp</p>
+                    <p>Follow us on Instagram</p>
                   </div>
                 </div>
               </div>

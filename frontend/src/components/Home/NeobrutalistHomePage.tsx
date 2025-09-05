@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react'
-import { Mic, Users, TrendingUp, Smartphone, Globe, Brain, Heart, Shield, Zap, Accessibility } from 'lucide-react'
+import { Mic, Users, TrendingUp, Smartphone, Globe, Brain, Heart, Zap, Accessibility, MessageCircle, Search, Languages, Volume2 } from 'lucide-react'
 import './NeobrutalistHomePage.css'
 
 const NeobrutalistHomePage: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [highlightedFeature, setHighlightedFeature] = useState(0)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -15,14 +16,6 @@ const NeobrutalistHomePage: React.FC = () => {
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
-
-
-  const stats = [
-    { number: '50+', label: 'African Languages', color: 'african-yellow' },
-    { number: '10K+', label: 'Voice Recordings', color: 'african-red' },
-    { number: '25K+', label: 'Translations', color: 'african-green' },
-    { number: '1.2K+', label: 'Contributors', color: 'kente-gold' },
-  ]
 
   const features = [
     {
@@ -63,26 +56,47 @@ const NeobrutalistHomePage: React.FC = () => {
     },
   ]
 
-  const testimonials = [
+  const productFeatures = [
     {
-      name: 'Mama Grace',
-      role: 'Elder, Luo Community',
-      content: 'For the first time, my grandchildren can hear our stories in our own language. They\'re not just learning words—they\'re learning who they are.',
-      avatar: 'MG',
+      icon: <Mic size={48} />,
+      title: 'Transcribe',
+      description: 'Convert speech to text with high accuracy across African languages',
+      color: 'african-yellow',
     },
     {
-      name: 'Dr. Amina Okafor',
-      role: 'Linguistics Professor, University of Nairobi',
-      content: 'This isn\'t just technology—it\'s hope. We\'re not just preserving languages; we\'re preserving the wisdom of generations.',
-      avatar: 'AO',
+      icon: <MessageCircle size={48} />,
+      title: 'Converse',
+      description: 'Interactive AI conversations that understand cultural context and nuance',
+      color: 'african-red',
     },
     {
-      name: 'James Mwangi',
-      role: 'Community Leader, Kikuyu Language',
-      content: 'Our language was dying. Now, thanks to Maneno, our children are speaking it again. We\'ve brought our culture back to life.',
-      avatar: 'JM',
+      icon: <Search size={48} />,
+      title: 'Analyze',
+      description: 'Deep linguistic analysis and insights from your language data',
+      color: 'african-green',
+    },
+    {
+      icon: <Languages size={48} />,
+      title: 'Translate',
+      description: 'Seamless translation between African languages and beyond',
+      color: 'kente-purple',
+    },
+    {
+      icon: <Volume2 size={48} />,
+      title: 'Speak',
+      description: 'Text-to-speech in authentic African language voices',
+      color: 'kente-orange',
     },
   ]
+
+  // Auto-slider effect for product features
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setHighlightedFeature((prev) => (prev + 1) % productFeatures.length)
+    }, 3000) // Change every 3 seconds
+
+    return () => clearInterval(interval)
+  }, [])
 
   const faqs = [
     {
@@ -283,6 +297,28 @@ const NeobrutalistHomePage: React.FC = () => {
         </div>
       </section>
 
+      {/* Product Features Section */}
+      <section id="product-features" className="product-features">
+        <div className="container">
+          <div className="section-header">
+            <h2 className="section-title">Our Product Features</h2>
+            <p className="section-description">
+              Powerful tools designed specifically for African language preservation and communication
+            </p>
+          </div>
+
+          <div className="product-features-grid">
+            {productFeatures.map((feature, index) => (
+              <div key={index} className={`product-feature-card ${index === highlightedFeature ? 'highlighted' : ''}`}>
+                <div className="product-feature-icon">{feature.icon}</div>
+                <h3 className="product-feature-title">{feature.title}</h3>
+                <p className="product-feature-description">{feature.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
 
       {/* Testimonials Section - Hidden */}
       {/* <section className="testimonials">
@@ -422,6 +458,9 @@ const NeobrutalistHomePage: React.FC = () => {
           </div>
           <div className="footer-bottom">
             <p>© 2024 Maneno - Preserving African Languages Through Technology</p>
+            <p className="footer-powered-by">
+              Powered by <a href="https://wex.co.ke" target="_blank" rel="noopener noreferrer" className="footer-link">WEX</a>
+            </p>
           </div>
         </div>
       </footer>
