@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('Install dependencies - Frontend') {
             steps {
-                sh 'pnpm install --no-frozen-lockfile'
+                sh 'cd frontend && pnpm install --no-frozen-lockfile'
             }
         }
         stage('Build - Frontend') {
