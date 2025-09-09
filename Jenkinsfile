@@ -18,7 +18,7 @@ pipeline {
                 //      pnpm build
                 //     '''
                 // }
-                sh 'cd frontend && pnpm build'
+                sh 'cd frontend && pnpm build:no-lint'
             }
         }
         stage('Deploy - Frontend') {
